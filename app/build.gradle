@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -51,7 +55,6 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.4.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 
-
     //RxJava2
     implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
 
@@ -61,5 +64,6 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
 
 }

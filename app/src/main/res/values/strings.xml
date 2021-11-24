@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RxJava Education App</string>
+    <string name="task_21">21. Запрос из сети</string>
 </resources>

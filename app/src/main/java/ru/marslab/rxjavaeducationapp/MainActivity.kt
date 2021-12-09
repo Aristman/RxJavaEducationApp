@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.getCachedCharacters()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(
-                        { Log.d("TASK_RESULT", it.toString()) },
+                        { Log.d("TASK_RESULT", it.name) },
                         { Log.e("TASK_RESULT", it.message.orEmpty()) }
                     )
             )

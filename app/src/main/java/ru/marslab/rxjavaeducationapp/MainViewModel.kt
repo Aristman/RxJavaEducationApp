@@ -41,21 +41,21 @@ class MainViewModel(private val rmDatabase: RmDatabase) : ViewModel() {
 
     fun getAllCharacters(isCache: Boolean): Observable<Character> =
         rmApiService.getAllCharacters()
-            .map { result ->
-                result.results.map { it.toDomain() }
-            }
-            .map {
+            .flattenAsObservable { it.results }
+            .map { it.toDomain() }
+            .doOnNext {
                 if (isCache) {
-                    rmDatabase.rmDao().saveCharacters(it.map { item -> item.toDB() })
+                    rmDatabase.rmDao().saveCharacter(it.toDB())
                 }
-                it
             }
-            .flattenAsObservable { it }
             .subscribeOn(Schedulers.io())
 
-    fun getCachedCharacters(): Single<List<Character>> =
+    fun getCachedCharacters(): Observable<Character> =
         rmDatabase.rmDao().getCachedCharacters()
-            .map { it.map { item -> item.toDomain() } }
+            .flatMap {
+                Observable.fromIterable(it)
+            }
+            .map { it.toDomain() }
             .subscribeOn(Schedulers.io())
 }
 

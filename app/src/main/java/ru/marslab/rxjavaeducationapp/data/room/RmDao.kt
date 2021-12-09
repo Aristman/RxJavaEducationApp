@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import io.reactivex.Single
+import io.reactivex.Observable
 import ru.marslab.rxjavaeducationapp.data.model.CharacterDB
 
 @Dao
@@ -16,5 +16,5 @@ interface RmDao {
     fun saveCharacter(characters: CharacterDB)
 
     @Query("SELECT * FROM characterdb")
-    fun getCachedCharacters(): Single<List<CharacterDB>>
+    fun getCachedCharacters(): Observable<List<CharacterDB>>
 }

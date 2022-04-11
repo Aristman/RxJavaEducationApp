@@ -2,4 +2,6 @@
     <string name="app_name">RxJava Education App</string>
     <string name="task_21">21. Запрос из сети</string>
     <string name="task_27">27. Вывод на Main потоке</string>
+    <string name="save_to_db">БД</string>
+    <string name="task_28">Чтение из БД</string>
 </resources>

@@ -13,3 +13,25 @@ fun CharactersNW.Character.toDomain(): Character =
         image = image,
         url = url
     )
+
+fun Character.toDB(): CharacterDB =
+    CharacterDB(
+        id = id,
+        name = name,
+        created = created,
+        episodes = episode.joinToString(separator = "|"),
+        gender = gender,
+        image = image,
+        url = url
+    )
+
+fun CharacterDB.toDomain(): Character =
+    Character(
+        id = id,
+        name = name,
+        created = created,
+        episode = episodes.split("|"),
+        gender = gender,
+        image = image,
+        url = url
+    )
